@@ -1,63 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class PlayerContoller : MonoBehaviour
 {
-    //mvoement
-    //shooting
-    //scope access modifier private or public
-
+    public int lives;
     private float playerSpeed;
     private float horizontalInput;
     private float verticalInput;
 
     private float horizontalScreenLimit = 9.5f;
     private float verticalScreenLimit = 6.5f;
-
+    public GameObject explosionPrefab;
     public GameObject bulletPrefab;
+    private GameManager gameManager;
+
 
     void Start()
     {
         playerSpeed = 6f;
-        //This function is called at the start of the game
-        
+        lives = 3;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.ChangeLivesText(lives);
     }
-
-    void Update()
+    public void LoseALife()
     {
-        //This function is called every frame; 60 frames/second
-        Movement();
-        Shooting();
-
-    }
-
-    void Shooting()
-    {
-        //if the player presses the SPACE key, create a projectile
-        if(Input.GetKeyDown(KeyCode.Space))
+        lives--;
+        gameManager.ChangeLivesText(lives);
+        if(lives==0)
         {
-            Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        //movement
+        //shooting
+        Movement();
+        Shooting();
+    }
     void Movement()
     {
-        //Read the input from the player
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        //Move the player
+        //move the player
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * playerSpeed);
-        //Player leaves the screen horizontally
-        if(transform.position.x > horizontalScreenLimit || transform.position.x <= -horizontalScreenLimit)
+        //limit the player movement to the screen
+        if (transform.position.x > horizontalScreenLimit || transform.position.x < -horizontalScreenLimit)
         {
             transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
         }
-        //Player leaves the screen vertically
-        if(transform.position.y > verticalScreenLimit || transform.position.y <= -verticalScreenLimit)
+        if (transform.position.y > verticalScreenLimit || transform.position.y < -verticalScreenLimit)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
+            transform.position = new Vector3(transform.position.x, -transform.position.y, 0);
         }
     }
-
+    //shooting
+    void Shooting()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Pew Pew" + horizontalScreenLimit);
+            //spawn bullet
+            Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+    }
 }
