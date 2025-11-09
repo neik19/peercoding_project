@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    //mvoement
+    //movement
     //shooting
     //scope access modifier private or public
 
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
 
     private float horizontalScreenLimit = 9.5f;
-    private float verticalScreenLimit = 6.5f;
+    private float verticalScreenLimit = 2.0f;
 
     public GameObject bulletPrefab;
 
