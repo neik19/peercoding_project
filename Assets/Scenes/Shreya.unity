@@ -415,7 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d94109e90df5b459d23841f3acb088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  bulletPrefab: {fileID: 0}
+  bulletPrefab: {fileID: 125460898009701601, guid: 90788e40197ec6a4a9903c7d42a23963, type: 3}
 --- !u!65 &799417730
 BoxCollider:
   m_ObjectHideFlags: 0
