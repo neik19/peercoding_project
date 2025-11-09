@@ -394,8 +394,8 @@ GameObject:
   - component: {fileID: 799417733}
   - component: {fileID: 799417732}
   - component: {fileID: 799417731}
-  - component: {fileID: 799417730}
   - component: {fileID: 799417729}
+  - component: {fileID: 799417734}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -415,28 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4d94109e90df5b459d23841f3acb088, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  bulletPrefab: {fileID: 0}
---- !u!65 &799417730
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799417728}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  bulletPrefab: {fileID: 125460898009701601, guid: 90788e40197ec6a4a9903c7d42a23963, type: 3}
 --- !u!23 &799417731
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -508,6 +487,52 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &799417734
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 799417728}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,7 +593,7 @@ GameObject:
   - component: {fileID: 1235315024}
   - component: {fileID: 1235315023}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,7 +611,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9178a6e6e80792f4ebc6cdd67785637e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  enemyOnePrefab: {fileID: 0}
+  enemyOnePrefab: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
   cloudPrefab: {fileID: 0}
   livesText: {fileID: 0}
   score: 0
