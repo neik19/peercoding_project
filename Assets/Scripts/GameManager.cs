@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         verticalScreenSize = 6.5f;
         score = 0;
         InvokeRepeating("CreateEnemyOne", 2.5f, 3f);
-        Invoke("CreateEnemyNeil", 5.5f);
+        Invoke("CreateEnemyNeil", 7f);
     }
 
     void CreateEnemyOne()
