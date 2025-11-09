@@ -35,13 +35,4 @@ public class GameManager : MonoBehaviour
 
         Instantiate(enemyNeilPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
-
-    public void AddScore(int earnedScore)
-    {
-        score += earnedScore;
-    }
-    public void ChangeLivesText(int currentLives)
-    {
-        livesText.text = "Lives: " + currentLives;
-    }
 }    
