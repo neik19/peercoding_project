@@ -10,18 +10,13 @@ public class ShreyaGameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        InvokeRepeating("CreateShreyaEnemy", 1, 2);
+        InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
 
-    void CreateEnemyOne()
+    void CreateShreyaEnemy()
     {
-        Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-9f, 9f), 6.5f, 0), Quaternion.identity);
+        Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
 }
   
