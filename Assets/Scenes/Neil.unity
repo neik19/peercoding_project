@@ -424,11 +424,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1538476914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9178a6e6e80792f4ebc6cdd67785637e, type: 3}
+  m_Script: {fileID: 11500000, guid: 0fd5d63b9f8d09e48abb5506680a4b3a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   enemyOnePrefab: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
   enemyNeilPrefab: {fileID: 3443598642758334722, guid: b7a4ddbab0d34754384d037d9741af0d, type: 3}
+  shreyaEnemyPrefab: {fileID: 1386478856970676138, guid: f3f785c3615d3094bbe6eb64e170731c, type: 3}
   livesText: {fileID: 0}
   score: 0
   horizontalScreenSize: 0
