@@ -27,8 +27,13 @@ public class PlayerContoller : MonoBehaviour
         gameManager.ChangeLivesText(lives);
         if(lives==0)
         {
+<<<<<<< Updated upstream:Assets/Scripts/Player.cs
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
+=======
+            Debug.Log("Pew Pew"+ horizontalScreenLimit);
+            Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+>>>>>>> Stashed changes:Assets/Scripts/PlayerController.cs
         }
     }
 
