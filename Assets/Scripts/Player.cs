@@ -13,15 +13,15 @@ public class PlayerController : MonoBehaviour
     private float verticalInput;
 
     private float horizontalScreenLimit = 9.5f;
-    private float verticalScreenLimit = 2.0f;
+    private float verticalScreenLimit = 4f; // Changed to 4f for bottom half
 
     public GameObject bulletPrefab;
 
     void Start()
     {
-        playerSpeed = 6f;
-        //This function is called at the start of the game
-        
+        playerSpeed = 8f;
+        // Set initial spawn position lower on the screen
+        transform.position = new Vector3(0, -3f, 0); // Spawn at bottom half
     }
 
     void Update()
@@ -29,7 +29,6 @@ public class PlayerController : MonoBehaviour
         //This function is called every frame; 60 frames/second
         Movement();
         Shooting();
-
     }
 
     void Shooting()
@@ -43,21 +42,28 @@ public class PlayerController : MonoBehaviour
 
     void Movement()
     {
-        //Read the input from the player
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
-        //Move the player
-        transform.Translate(new Vector3(horizontalInput, verticalInput, 0) * Time.deltaTime * playerSpeed);
-        //Player leaves the screen horizontally
-        if(transform.position.x > horizontalScreenLimit || transform.position.x <= -horizontalScreenLimit)
+        
+        transform.Translate(new Vector3(horizontalInput, verticalInput, 0f) * Time.deltaTime * playerSpeed);
+        
+        //Player leaves the screen horizontally - Pac-Man to opposite side
+        if(transform.position.x > horizontalScreenLimit)
         {
-            transform.position = new Vector3(transform.position.x * -1, transform.position.y, 0);
+            transform.position = new Vector3(-horizontalScreenLimit, transform.position.y, 0f);
         }
-        //Player leaves the screen vertically
-        if(transform.position.y > verticalScreenLimit || transform.position.y <= -verticalScreenLimit)
+        else if(transform.position.x < -horizontalScreenLimit)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y * -1, 0);
+            transform.position = new Vector3(horizontalScreenLimit, transform.position.y, 0f);
+        }
+        
+        if(transform.position.y > 0f) // If player goes above center line
+        {
+            transform.position = new Vector3(transform.position.x, -verticalScreenLimit, 0f);
+        }
+        else if(transform.position.y < -verticalScreenLimit) // If player goes below bottom limit
+        {
+            transform.position = new Vector3(transform.position.x, 0f, 0f);
         }
     }
-
 }

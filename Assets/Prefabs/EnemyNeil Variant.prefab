@@ -9,6 +9,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 173823371872868005, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 173823371872868005, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 173823371872868005, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 173823371872868005, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.9732821
       objectReference: {fileID: 0}
@@ -52,8 +64,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyNeil Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4942970492426147600, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7692017679786827707}
   m_SourcePrefab: {fileID: 100100000, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+--- !u!1 &3443598642758334722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+  m_PrefabInstance: {fileID: 4393223592820809384}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7692017679786827707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443598642758334722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c60d3a088fb4fe4797fae297688cbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyNeil
+  bulletPrefab: {fileID: 125460898009701601, guid: 90788e40197ec6a4a9903c7d42a23963, type: 3}
