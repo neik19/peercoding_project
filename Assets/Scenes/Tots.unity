@@ -636,7 +636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TotsPlayer
   lives: 0
-  bulletPrefab: {fileID: 125460898009701601, guid: 90788e40197ec6a4a9903c7d42a23963, type: 3}
+  bulletPrefab: {fileID: 125460898009701601, guid: 4d32237b517b20a4db341d1a892cd788, type: 3}
   explosionPrefab: {fileID: 3562516053837853733, guid: 68ec7371e1c071c40bd85a0bcdf07f05, type: 3}
 --- !u!1 &832575517
 GameObject:
