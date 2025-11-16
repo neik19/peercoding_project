@@ -5,6 +5,8 @@ using UnityEngine;
 public class EnemyNeil : MonoBehaviour
 {
     public GameObject bulletPrefab;
+    public GameObject explosionPrefab;
+    private TatiGameManager gameManager;
     private GameObject player;
     private float shootTimer = 0f;
     public GameObject explosionPrefab;
@@ -13,6 +15,7 @@ public class EnemyNeil : MonoBehaviour
     
     void Start()
     {
+        gameManager = GameObject.Find("GameManager").GetComponent<TatiGameManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         shootTimer = 2.5f;
     }
@@ -58,21 +61,19 @@ public class EnemyNeil : MonoBehaviour
             bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
-
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        if(whatDidIHit.tag == "Player")
         {
-            Debug.Log("Enemy hit" + whatDidIHit.gameObject.name);
-            if(whatDidIHit.tag == "Player")
-            {
-                whatDidIHit.GetComponent<ShreyaPlayerController>().LoseALife();
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
-            }
-            else if(whatDidIHit.tag == "Weapons")
-            {
-                Destroy(whatDidIHit.gameObject);
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
-            }
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        } 
+        else if(whatDidIHit.tag == "Weapons")
+        {
+            Destroy(whatDidIHit.gameObject);
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+            gameManager.AddScore(10);
         }
+    }
 }

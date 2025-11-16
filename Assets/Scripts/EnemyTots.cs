@@ -5,11 +5,10 @@ using UnityEngine;
 public class EnemyTots : MonoBehaviour
 {
     public GameObject explosionPrefab;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("GameManager").GetComponent<TatiGameManager>();
     }
 
     // Update is called once per frame
@@ -21,21 +20,20 @@ public class EnemyTots : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    
-    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+     private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        if(whatDidIHit.tag == "Player")
         {
-            Debug.Log("Enemy hit" + whatDidIHit.gameObject.name);
-            if(whatDidIHit.tag == "Player")
-            {
-                whatDidIHit.GetComponent<ShreyaPlayerController>().LoseALife();
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
-            }
-            else if(whatDidIHit.tag == "Weapons")
-            {
-                Destroy(whatDidIHit.gameObject);
-                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-                Destroy(this.gameObject);
-            }
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        } 
+        else if(whatDidIHit.tag == "Weapons")
+        {
+            Destroy(whatDidIHit.gameObject);
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+            gameManager.AddScore(5);
         }
+    }
+
 }
