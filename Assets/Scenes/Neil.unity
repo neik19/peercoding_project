@@ -729,12 +729,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faa317831624aa94f82381d37a6e5719, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShreyaGameManager
+  Player: {fileID: 981225222040301099, guid: 3fb2cf0ab73e4144b95a28bae3e7bdbe, type: 3}
   enemyTotsPrefab: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
   enemyNeilPrefab: {fileID: 3443598642758334722, guid: b7a4ddbab0d34754384d037d9741af0d, type: 3}
   shreyaEnemyPrefab: {fileID: 1386478856970676138, guid: f3f785c3615d3094bbe6eb64e170731c, type: 3}
   cloudPrefab: {fileID: 6887579723602768108, guid: 58b9f989accd136429028d0255fbeb61, type: 3}
   livesText: {fileID: 1485022690}
+  gameOverText: {fileID: 0}
+  coinPrefab: {fileID: 577422009328132295, guid: 58994e8a1080e3b478a946bf195f2b09, type: 3}
+  audioPlayer: {fileID: 0}
+  explosionBoom: {fileID: 0}
   score: 0
+  cloudMove: 0
   horizontalScreenSize: 0
   verticalScreenSize: 0
 --- !u!4 &2062267839

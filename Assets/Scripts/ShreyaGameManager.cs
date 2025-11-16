@@ -7,6 +7,8 @@ using TMPro;
 
 public class ShreyaGameManager : MonoBehaviour
 {
+    public GameObject Player;
+    
     public GameObject enemyTotsPrefab;
 
     public GameObject enemyNeilPrefab;
@@ -41,26 +43,26 @@ public class ShreyaGameManager : MonoBehaviour
         verticalScreenSize = 6.5f;
         score = 0;
         cloudMove = 1;
-        gameOver = false;
         CreateSky();
         InvokeRepeating("CreateEnemyTots", 2.5f, 3f);
         InvokeRepeating("CreateEnemyNeil", 5f,6f);
         InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
+        StartCoroutine(SpawnPlusCoin());
     }
 
     IEnumerator SpawnPlusCoin()
     {
-        float spawnTime = Random.Range(3,5);
-        yield return new waitForSeconds (spawnTime);
+        float spawnTime = Random.Range(4,8);
+        yield return new WaitForSeconds (spawnTime);
         CreatePlusCoin();
-        StartCounting(SpawnPlusCoin());
+        StartCoroutine(SpawnPlusCoin());
     }
 
     void CreateSky()
     {
         for(int i =0; i < 30; i++)
         {
-            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize), Random.Range(-verticalScreenSize, verticalScreenSize), 0), Quaternion.identity);
+            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize* 2f, horizontalScreenSize + 3f), Random.Range(-verticalScreenSize + 2f, verticalScreenSize), 4f), Quaternion.identity);
         }
         
     }
@@ -81,7 +83,7 @@ public class ShreyaGameManager : MonoBehaviour
 
     void CreatePlusCoin()
     {
-        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize*0.8, horizontalScreenSize *0.8), Random.Range(-verticalScreenSize*0.8, verticalScreenSize*0.8) 0), Quaternion.identity);
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize*0.8f, horizontalScreenSize *0.8f), Random.Range(-verticalScreenSize*0.6f, verticalScreenSize*0.6f), 0), Quaternion.identity);
     }
 
     public void AddScore(int earnedScore)
