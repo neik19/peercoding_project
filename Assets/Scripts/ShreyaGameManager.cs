@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
 using TMPro;
 
 public class ShreyaGameManager : MonoBehaviour
@@ -89,13 +87,6 @@ public class ShreyaGameManager : MonoBehaviour
     public void AddScore(int earnedScore)
     {
         score += earnedScore;
-        //lives --
-        //lives -= 1
-        //lives = lives -1
-
-        //score ++
-        //score += 1
-        //score = score +1
     }
     public void ChangeLivesText(int currentLives)
     {
