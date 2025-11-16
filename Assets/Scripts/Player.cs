@@ -14,12 +14,20 @@ public class PlayerController : MonoBehaviour
     public GameObject explosionPrefab;
     public GameObject bulletPrefab;
     private GameManager gameManager;
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
     void Start()
     {
         playerSpeed = 8f;
         lives = 3;
+<<<<<<< Updated upstream
+=======
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager.ChangeLivesText(lives);
+>>>>>>> Stashed changes
         // Set initial spawn position lower on the screen
         transform.position = new Vector3(0, -3f, 0); // Spawn at bottom half
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -34,6 +42,16 @@ public class PlayerController : MonoBehaviour
         {
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(gameObject);
+        }
+    }
+    public void LoseALife()
+    {
+        lives--;
+        gameManager.ChangeLivesText(lives);
+        if(lives==0)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 
