@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyNeil : MonoBehaviour
 {
     public GameObject bulletPrefab;
+     public GameObject explosionPrefab;
     private GameObject player;
     private float shootTimer = 0f;
     
@@ -31,6 +32,20 @@ public class EnemyNeil : MonoBehaviour
         {
             ShootAtPlayer();
             shootTimer = 3f; // Reset timer for next shot
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        if(whatDidIHit.tag == "Player")
+        {
+            whatDidIHit.GetComponent<PlayerController>().LoseALife();
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        } else if(whatDidIHit.tag == "Weapons")
+        {
+            Destroy(whatDidIHit.gameObject);
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
         }
     }
 

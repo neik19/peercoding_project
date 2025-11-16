@@ -3,7 +3,11 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using TMPro;
 
+<<<<<<< Updated upstream:Assets/Scripts/NeilGameManager.cs
 public class GameManager : MonoBehaviour
+=======
+public class TatiGameManager : MonoBehaviour
+>>>>>>> Stashed changes:Assets/Scripts/TatiGameManager.cs
 {
     public GameObject enemyOnePrefab;
     public GameObject enemyNeilPrefab;
@@ -35,4 +39,20 @@ public class GameManager : MonoBehaviour
 
         Instantiate(enemyNeilPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
+<<<<<<< Updated upstream:Assets/Scripts/NeilGameManager.cs
+=======
+
+    void CreateShreyaEnemy()
+    {
+        Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
+    }
+    public void AddScore(int earnedScore)
+    {
+        score += earnedScore;
+    }
+    public void ChangeLivesText(int currentLives)
+    {
+        livesText.text = "Lives: " + currentLives;
+    }
+>>>>>>> Stashed changes:Assets/Scripts/TatiGameManager.cs
 }    
