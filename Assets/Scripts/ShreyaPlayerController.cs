@@ -1,0 +1,89 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ShreyaPlayerController : MonoBehaviour
+{
+    //movement
+    //shooting
+    //scope access modifier private or public
+    public int lives;
+    private float playerSpeed;
+    private float horizontalInput;
+    private float verticalInput;
+
+    private float horizontalScreenLimit = 9.5f;
+    private float verticalScreenLimit = 6.5f;
+
+    public GameObject explosionPrefab;
+    public GameObject bulletPrefab;
+    private ShreyaGameManager gameManager;
+
+    void Start()
+    {
+        playerSpeed = 8f;
+        lives = 3;
+        // Set initial spawn position lower on the screen
+        // Spawn at bottom half
+        gameManager = GameObject.Find("ShreyaGameManager").GetComponent<ShreyaGameManager>();
+        gameManager.ChangeLivesText(lives);
+        transform.position = new Vector3(0, -3f, 0);
+    }
+    public void LoseALife ()
+    {
+        //live--
+        //live = lives -1
+        //lives -= 1
+
+        lives--;
+        gameManager.ChangeLivesText(lives);
+
+        if(lives == 0)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+    void Update()
+    {
+        //This function is called every frame; 60 frames/second
+        Movement();
+        Shooting();
+    }
+
+    void Shooting()
+    {
+        //if the player presses the SPACE key, create a projectile
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Instantiate(bulletPrefab, transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+        }
+    }
+
+    void Movement()
+    {
+        horizontalInput = Input.GetAxis("Horizontal");
+        verticalInput = Input.GetAxis("Vertical");
+        
+        transform.Translate(new Vector3(horizontalInput, verticalInput, 0f) * Time.deltaTime * playerSpeed);
+        
+        //Player leaves the screen horizontally - Pac-Man to opposite side
+        if(transform.position.x > horizontalScreenLimit)
+        {
+            transform.position = new Vector3(-horizontalScreenLimit, transform.position.y, 0f);
+        }
+        else if(transform.position.x < -horizontalScreenLimit)
+        {
+            transform.position = new Vector3(horizontalScreenLimit, transform.position.y, 0f);
+        }
+        
+        if(transform.position.y > verticalScreenLimit)
+        {
+            transform.position = new Vector3(transform.position.x, -verticalScreenLimit, 0f);
+        }
+        else if(transform.position.y < -verticalScreenLimit)
+        {
+            transform.position = new Vector3(transform.position.x, verticalScreenLimit, 0f);
+        }
+    }
+}
