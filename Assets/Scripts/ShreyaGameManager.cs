@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
@@ -10,6 +12,7 @@ public class ShreyaGameManager : MonoBehaviour
     public GameObject shreyaEnemyPrefab;
     public GameObject cloudPrefab;
     public TextMeshProUGUI livesText;
+    public GameObject coinPrefab;
     public int score;
     public float horizontalScreenSize;
     public float verticalScreenSize;
@@ -22,7 +25,7 @@ public class ShreyaGameManager : MonoBehaviour
         score = 0;
         CreateSky();
         InvokeRepeating("CreateEnemyTots", 2.5f, 3f);
-        Invoke("CreateEnemyNeil", 7f);
+        InvokeRepeating("CreateEnemyNeil", 5f,6f);
         InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
     }
 
@@ -39,7 +42,7 @@ public class ShreyaGameManager : MonoBehaviour
         Instantiate(enemyTotsPrefab, new Vector3(Random.Range(-8f, 8f), 6.5f, 0), Quaternion.identity);
     }
 
-        void CreateEnemyNeil()
+    void CreateEnemyNeil()
     { 
         Instantiate(enemyNeilPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
@@ -48,6 +51,12 @@ public class ShreyaGameManager : MonoBehaviour
     {
         Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
+
+    void CreatePlusCoin()
+    {
+        Instantiate(coinPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
+    }
+
     public void AddScore(int earnedScore)
     {
         score += earnedScore;

@@ -7,12 +7,14 @@ public class EnemyNeil : MonoBehaviour
     public GameObject bulletPrefab;
     private GameObject player;
     private float shootTimer = 0f;
+    public GameObject explosionPrefab;
+
+
     
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        // Start shooting immediately and then every 3 seconds
-        shootTimer = 3f;
+        shootTimer = 2.5f;
     }
 
     // Update is called once per frame
@@ -56,4 +58,21 @@ public class EnemyNeil : MonoBehaviour
             bullet.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+        {
+            Debug.Log("Enemy hit" + whatDidIHit.gameObject.name);
+            if(whatDidIHit.tag == "Player")
+            {
+                whatDidIHit.GetComponent<ShreyaPlayerController>().LoseALife();
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+            else if(whatDidIHit.tag == "Weapons")
+            {
+                Destroy(whatDidIHit.gameObject);
+                Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+                Destroy(this.gameObject);
+            }
+        }
 }
