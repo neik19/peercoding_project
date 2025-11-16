@@ -2,11 +2,12 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class ShreyaGameManager : MonoBehaviour
 {
-    public GameObject Player;
-    
+    public GameObject playerPrefab;
     public GameObject enemyTotsPrefab;
 
     public GameObject enemyNeilPrefab;
@@ -14,19 +15,18 @@ public class ShreyaGameManager : MonoBehaviour
     public GameObject shreyaEnemyPrefab;
 
     public GameObject cloudPrefab;
-
-    public TextMeshProUGUI livesText;
-
-    public TextMeshProUGUI scoreText;
-
     public GameObject gameOverText;
-
-    public GameObject coinPrefab;
-
+    public GameObject restartText;
+    public GameObject powerupPrefab;
     public GameObject audioPlayer;
-
+    public AudioClip powerUpSound;
+    public AudioClip powerDownSound;
     public AudioClip explosionBoom;
 
+
+    public TextMeshProUGUI livesText;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI powerUpText;
     public int score;
 
     public int cloudMove;
@@ -35,6 +35,8 @@ public class ShreyaGameManager : MonoBehaviour
 
     public float verticalScreenSize;
 
+    public int cloudMove;
+    private bool gameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -43,6 +45,9 @@ public class ShreyaGameManager : MonoBehaviour
         verticalScreenSize = 6.5f;
         score = 0;
         cloudMove = 1;
+        gameOver = false;
+        AddScore(0);
+        Instantiate(playerPrefab, transform.position, Quaternion.identity);
         CreateSky();
         InvokeRepeating("CreateEnemyTots", 2.5f, 3f);
         InvokeRepeating("CreateEnemyNeil", 5f,6f);
@@ -56,8 +61,46 @@ public class ShreyaGameManager : MonoBehaviour
         yield return new WaitForSeconds (spawnTime);
         CreatePlusCoin();
         StartCoroutine(SpawnPlusCoin());
+        StartCoroutine(SpawnPowerup());
     }
 
+    IEnumerator SpawnPowerup()
+    {
+        float spawnTime = Random.Range(3, 5);
+        yield return new WaitForSeconds(spawnTime);
+        CreatePowerUp();
+        StartCoroutine(SpawnPowerup());
+        powerUpText.text = "No PowerUps yet!";
+
+    }
+    void CreatePowerUp()
+    {
+        Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+    }
+    public void ManagePowerupText(int powerUpType)
+    {
+        switch(powerUpType)
+        {
+            case 1:
+                powerUpText.text = "Extra Health!";
+                break;
+            default:
+                powerUpText.text = "No PowerUps yet!";
+                break;
+        }
+    }
+        public void PlaySound(int whichSound)
+    {
+        switch (whichSound)
+        {
+            case 1:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerUpSound);
+                break;
+            case 2:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
+                break;
+        }
+    }
     void CreateSky()
     {
         for(int i =0; i < 30; i++)
@@ -65,6 +108,14 @@ public class ShreyaGameManager : MonoBehaviour
             Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize* 2f, horizontalScreenSize + 3f), Random.Range(-verticalScreenSize + 2f, verticalScreenSize), 4f), Quaternion.identity);
         }
         
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if(gameOver && Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
     void CreateEnemyTots()
     { 
@@ -94,5 +145,13 @@ public class ShreyaGameManager : MonoBehaviour
     public void ChangeLivesText(int currentLives)
     {
         livesText.text = "Lives: " + currentLives;
+    }
+    public void GameOver()
+    {
+        gameOverText.SetActive(true);
+        restartText.SetActive(true);
+        gameOver = true;
+        CancelInvoke();
+        cloudMove = 0;
     }
 }    
