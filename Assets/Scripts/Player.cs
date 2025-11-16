@@ -4,37 +4,24 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public int lives;
+    //movement
+    //shooting
+    //scope access modifier private or public
+
     private float playerSpeed;
     private float horizontalInput;
     private float verticalInput;
 
     private float horizontalScreenLimit = 9.5f;
     private float verticalScreenLimit = 4f; // Changed to 4f for bottom half
-    public GameObject explosionPrefab;
-    public GameObject bulletPrefab;
-    private GameManager gameManager;
 
+    public GameObject bulletPrefab;
 
     void Start()
     {
         playerSpeed = 8f;
-        lives = 3;
         // Set initial spawn position lower on the screen
         transform.position = new Vector3(0, -3f, 0); // Spawn at bottom half
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        gameManager.ChangeLivesText(lives);
-    }
-    public void LoseALife()
-    {
-        lives--;
-        gameManager.ChangeLivesText(lives);
-
-        if(lives==0)
-        {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
     }
 
     void Update()

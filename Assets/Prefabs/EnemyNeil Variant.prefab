@@ -91,4 +91,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyNeil
   bulletPrefab: {fileID: 125460898009701601, guid: 90788e40197ec6a4a9903c7d42a23963, type: 3}
-  explosionPrefab: {fileID: 3202131440644215620, guid: 2f531df77d2b9a443a1648ee7a1b32a6, type: 3}
