@@ -591,7 +591,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1235315024}
-  - component: {fileID: 1235315023}
+  - component: {fileID: 1235315025}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -599,24 +599,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1235315023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1235315022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9178a6e6e80792f4ebc6cdd67785637e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  enemyOnePrefab: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
-  cloudPrefab: {fileID: 0}
-  livesText: {fileID: 0}
-  score: 0
-  horizontalScreenSize: 0
-  verticalScreenSize: 0
 --- !u!4 &1235315024
 Transform:
   m_ObjectHideFlags: 0
@@ -632,6 +614,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1235315025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1235315022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd5d63b9f8d09e48abb5506680a4b3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  enemyTotsPrefab: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+  enemyNeilPrefab: {fileID: 3443598642758334722, guid: b7a4ddbab0d34754384d037d9741af0d, type: 3}
+  shreyaEnemyPrefab: {fileID: 1386478856970676138, guid: f3f785c3615d3094bbe6eb64e170731c, type: 3}
+  livesText: {fileID: 0}
+  score: 0
+  horizontalScreenSize: 0
+  verticalScreenSize: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
