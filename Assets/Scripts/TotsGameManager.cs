@@ -5,7 +5,6 @@ using TMPro;
 
 public class TotsGameManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
     public GameObject enemyOnePrefab;
     public GameObject enemyNeilPrefab;
     public TextMeshProUGUI livesText;
@@ -24,19 +23,18 @@ public class TotsGameManager : MonoBehaviour
     }
 
     void CreateEnemyOne()
-    {
+    { 
         Debug.Log("Enemy One created");
 
         Instantiate(enemyOnePrefab, new Vector3(Random.Range(-8f, 8f), 6.5f, 0), Quaternion.identity);
     }
 
-    void CreateEnemyNeil()
-    {
+        void CreateEnemyNeil()
+    { 
         Debug.Log("Enemy Neil created");
 
         Instantiate(enemyNeilPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
-<<<<<<< Updated upstream
 <<<<<<< Updated upstream:Assets/Scripts/TotsGameManager.cs
 =======
 
@@ -44,8 +42,6 @@ public class TotsGameManager : MonoBehaviour
     {
         Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
-=======
->>>>>>> Stashed changes
     public void AddScore(int earnedScore)
     {
         score += earnedScore;
@@ -54,10 +50,5 @@ public class TotsGameManager : MonoBehaviour
     {
         livesText.text = "Lives: " + currentLives;
     }
-<<<<<<< Updated upstream
 >>>>>>> Stashed changes:Assets/Scripts/GameManager.cs
 }    
-=======
-
-}
->>>>>>> Stashed changes
