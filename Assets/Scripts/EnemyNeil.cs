@@ -6,16 +6,15 @@ public class EnemyNeil : MonoBehaviour
 {
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
-    private TatiGameManager gameManager;
+    private ShreyaGameManager gameManager;
     private GameObject player;
     private float shootTimer = 0f;
-    public GameObject explosionPrefab;
 
 
     
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<TatiGameManager>();
+        gameManager = GameObject.Find("ShreyaGameManager").GetComponent<ShreyaGameManager>();
         player = GameObject.FindGameObjectWithTag("Player");
         shootTimer = 2.5f;
     }

@@ -5,10 +5,12 @@ using UnityEngine;
 public class EnemyTots : MonoBehaviour
 {
     public GameObject explosionPrefab;
+    private ShreyaGameManager gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("GameManager").GetComponent<TatiGameManager>();
+        gameManager = GameObject.Find("ShreyaGameManager").GetComponent<ShreyaGameManager>();
     }
 
     // Update is called once per frame

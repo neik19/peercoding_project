@@ -17,6 +17,8 @@ public class ShreyaGameManager : MonoBehaviour
 
     public TextMeshProUGUI livesText;
 
+    public TextMeshProUGUI scoreText;
+
     public GameObject gameOverText;
 
     public GameObject coinPrefab;
@@ -87,6 +89,7 @@ public class ShreyaGameManager : MonoBehaviour
     public void AddScore(int earnedScore)
     {
         score += earnedScore;
+        scoreText.text = "Score: " + score;
     }
     public void ChangeLivesText(int currentLives)
     {
