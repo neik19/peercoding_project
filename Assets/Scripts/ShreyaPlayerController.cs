@@ -47,7 +47,7 @@ public class ShreyaPlayerController : MonoBehaviour
         if(whatDidIHit.tag == "Powerup")
         {
             Destroy(whatDidIHit.gameObject);
-            int whichPowerup = Random.Range(1, 1);
+            int whichPowerup = Random.Range(1, 3);
             gameManager.PlaySound(1);
             switch (whichPowerup)
             {
@@ -61,7 +61,7 @@ public class ShreyaPlayerController : MonoBehaviour
         else if(whatDidIHit.tag == "PlusCoin")
         {
             Destroy(whatDidIHit.gameObject);
-            int whichPowerup = Random.Range(1, 1);
+            int whichPowerup = Random.Range(1, 3);
             gameManager.PlaySound(2);
             switch (whichPowerup)
             {
@@ -70,7 +70,14 @@ public class ShreyaPlayerController : MonoBehaviour
                     gameManager.ManagePowerupText(2);
                     break;
             }
+        }    
+        else if(whatDidIHit.tag == "Enemy")
+        {
+            Destroy(whatDidIHit.gameObject); // Destroy the enemy
+            LoseALife(); // Player loses a life
+            gameManager.PlaySound(3);
         }
+        
     }
     void Update()
     {

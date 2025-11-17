@@ -119,6 +119,9 @@ public class GameManager1 : MonoBehaviour
             case 2:
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
                 break;
+            case 3:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
+            break;
         }
     }
     void CreateSky()
