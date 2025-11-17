@@ -5,11 +5,13 @@ using UnityEngine;
 public class ShreyaEnemy : MonoBehaviour
 {
     public GameObject explosionPrefab;
+    private ShreyaPGameManager gameManager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager = GameObject.Find("ShreyaPGameManager").GetComponent<ShreyaPGameManager>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -25,7 +27,7 @@ public class ShreyaEnemy : MonoBehaviour
         Debug.Log("Enemy hit" + whatDidIHit.gameObject.name);
         if(whatDidIHit.tag == "Player")
         {
-            whatDidIHit.GetComponent<ShreyaPlayerController>().LoseALife();
+            whatDidIHit.GetComponent<ShreyaPPlayerController>().LoseALife();
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         }

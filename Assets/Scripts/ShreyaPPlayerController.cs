@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShreyaPlayerController : MonoBehaviour
+public class ShreyaPPlayerController : MonoBehaviour
 {
     //movement
     //shooting
@@ -17,11 +17,11 @@ public class ShreyaPlayerController : MonoBehaviour
 
     public GameObject explosionPrefab;
     public GameObject bulletPrefab;
-    private ShreyaGameManager gameManager;
+    private ShreyaPGameManager gameManager;
 
     void Start()
     {
-        gameManager = GameObject.Find("ShreyaGameManager").GetComponent<ShreyaGameManager>();
+        gameManager = GameObject.Find("ShreyaPGameManager").GetComponent<ShreyaPGameManager>();
         playerSpeed = 8f;
         lives = 3;
         // Set initial spawn position lower on the screen

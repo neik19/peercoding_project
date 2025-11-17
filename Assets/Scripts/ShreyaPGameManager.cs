@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class ShreyaGameManager : MonoBehaviour
+public class ShreyaPGameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject enemyTotsPrefab;
