@@ -1171,8 +1171,8 @@ MonoBehaviour:
   gameOverText: {fileID: 1626224574}
   restartText: {fileID: 706754303}
   powerupPrefab: {fileID: 8095683134460255822, guid: c9bc6742e76a68d4595f3efb223ee227, type: 3}
-  audioPlayer: {fileID: 0}
-  powerUpSound: {fileID: 0}
+  audioPlayer: {fileID: 2062267837}
+  powerUpSound: {fileID: 8300000, guid: 605e621c2f3e0294c9b98402ad3dd84f, type: 3}
   powerDownSound: {fileID: 0}
   explosionBoom: {fileID: 0}
   livesText: {fileID: 220472948}
