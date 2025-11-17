@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public GameObject enemyNeilPrefab;
     public GameObject shreyaEnemyPrefab;
     public TextMeshProUGUI livesText;
+    public TextMeshProUGUI scoreText;
     public int score;
     public float horizontalScreenSize;
     public float verticalScreenSize;
@@ -37,5 +38,10 @@ public class GameManager : MonoBehaviour
     void CreateShreyaEnemy()
     {
         Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
+    }
+     public void AddScore(int earnedScore)
+    {
+        score = score + earnedScore;
+        scoreText.text = "Score: " + score;
     }
 }    
