@@ -27,7 +27,6 @@ public class ShreyaGameManager : MonoBehaviour
     public TextMeshProUGUI powerUpText;
     public int score;
 
-    public int cloudMove;
 
     public float horizontalScreenSize;
 
