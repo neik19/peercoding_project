@@ -23,7 +23,7 @@ public class ShreyaPlayerController : MonoBehaviour
     {
         gameManager = GameObject.Find("GameManager1").GetComponent<GameManager1>();
         playerSpeed = 8f;
-        lives = 3;
+        lives = 1;
         // Set initial spawn position lower on the screen
         // Spawn at bottom half
         transform.position = new Vector3(0, -3f, 0);
@@ -42,11 +42,32 @@ public class ShreyaPlayerController : MonoBehaviour
             gameManager.GameOver();
         }
     }
+    public void AddALife()
+    {
+        if (lives < 3)
+        {
+            lives++;
+            
+            if (gameManager != null)
+            {
+                gameManager.ChangeLivesText(lives);
+            }
+        }
+        else
+        {
+            if (gameManager != null)
+            {
+                gameManager.ManagePowerupText(3);
+            }
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if(whatDidIHit.tag == "Powerup")
         {
             Destroy(whatDidIHit.gameObject);
+            AddALife();
             int whichPowerup = Random.Range(1, 3);
             gameManager.PlaySound(1);
             switch (whichPowerup)
@@ -79,6 +100,8 @@ public class ShreyaPlayerController : MonoBehaviour
         }
         
     }
+
+
     void Update()
     {
         //This function is called every frame; 60 frames/second
