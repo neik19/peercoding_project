@@ -15,6 +15,7 @@ public class ShreyaGameManager : MonoBehaviour
     public GameObject shreyaEnemyPrefab;
 
     public GameObject cloudPrefab;
+    public GameObject coinPrefab;
     public GameObject gameOverText;
     public GameObject restartText;
     public GameObject powerupPrefab;
@@ -35,7 +36,6 @@ public class ShreyaGameManager : MonoBehaviour
 
     public float verticalScreenSize;
 
-    public int cloudMove;
     private bool gameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -53,6 +53,7 @@ public class ShreyaGameManager : MonoBehaviour
         InvokeRepeating("CreateEnemyNeil", 5f,6f);
         InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
         StartCoroutine(SpawnPlusCoin());
+        StartCoroutine(SpawnPowerup());
     }
 
     IEnumerator SpawnPlusCoin()
@@ -61,7 +62,6 @@ public class ShreyaGameManager : MonoBehaviour
         yield return new WaitForSeconds (spawnTime);
         CreatePlusCoin();
         StartCoroutine(SpawnPlusCoin());
-        StartCoroutine(SpawnPowerup());
     }
 
     IEnumerator SpawnPowerup()

@@ -61,6 +61,20 @@ public class ShreyaPlayerController : MonoBehaviour
                     break;
             }
         }
+        else if(whatDidIHit.tag == "PlusCoin")
+        {
+            Destroy(whatDidIHit.gameObject);
+            int whichPowerup = Random.Range(1, 1);
+            gameManager.PlaySound(1);
+            switch (whichPowerup)
+            {
+                case 1:
+                    //Picked up health
+                    gameManager.ManagePowerupText(1);
+                    gameManager.PlaySound(1);
+                    break;
+            }
+        }
     }
     void Update()
     {
