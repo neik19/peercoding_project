@@ -14,7 +14,6 @@ public class ShreyaGameManager : MonoBehaviour
     public GameObject shreyaEnemyPrefab;
 
     public GameObject cloudPrefab;
-    public GameObject coinPrefab;
     public GameObject gameOverText;
     public GameObject restartText;
     public GameObject powerupPrefab;
@@ -75,9 +74,9 @@ public class ShreyaGameManager : MonoBehaviour
                 break;
         }
     }
-        public void PlaySound(int whichSound)
+        public void PlaySound(int soundType)
     {
-        switch (whichSound)
+        switch (soundType)
         {
             case 1:
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerUpSound);
@@ -117,13 +116,7 @@ public class ShreyaGameManager : MonoBehaviour
     {
         Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
-
-    void CreatePlusCoin()
-    {
-        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize*0.8f, horizontalScreenSize *0.8f), Random.Range(-verticalScreenSize*0.6f, verticalScreenSize*0.6f), 0), Quaternion.identity);
-    }
-
-    public void AddScore(int earnedScore)
+        public void AddScore(int earnedScore)
     {
         score += earnedScore;
         scoreText.text = "Score: " + score;

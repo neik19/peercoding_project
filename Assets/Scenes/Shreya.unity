@@ -1065,7 +1065,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1810247488}
   - component: {fileID: 1810247489}
-  - component: {fileID: 1810247490}
   m_Layer: 0
   m_Name: ShreyaGameManager
   m_TagString: Untagged
@@ -1109,8 +1108,8 @@ MonoBehaviour:
   gameOverText: {fileID: 433970032}
   restartText: {fileID: 546192552}
   powerupPrefab: {fileID: 8095683134460255822, guid: c9bc6742e76a68d4595f3efb223ee227, type: 3}
-  audioPlayer: {fileID: 1810247486}
-  powerUpSound: {fileID: 8300000, guid: 605e621c2f3e0294c9b98402ad3dd84f, type: 3}
+  audioPlayer: {fileID: 0}
+  powerUpSound: {fileID: 0}
   powerDownSound: {fileID: 0}
   livesText: {fileID: 141303997}
   scoreText: {fileID: 0}
@@ -1119,6 +1118,7 @@ MonoBehaviour:
   cloudMove: 0
   horizontalScreenSize: 0
   verticalScreenSize: 0
+<<<<<<< HEAD
 --- !u!82 &1810247490
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1216,6 +1216,9 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+=======
+  cloudMove: 0
+>>>>>>> parent of e93ed09 (my bad y'all :()
 --- !u!1 &2051284716
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,6 +26,7 @@ public class ShreyaEnemy : MonoBehaviour
     {
         if(whatDidIHit.tag == "Player")
         {
+            whatDidIHit.GetComponent<ShreyaPlayerController>().LoseALife();
             Instantiate(explosionPrefab, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
         } 
