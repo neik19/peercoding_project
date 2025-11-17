@@ -6,12 +6,12 @@ public class ShreyaEnemy : MonoBehaviour
 {
     public GameObject explosionPrefab;
     private ShreyaGameManager gameManager;
-
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameObject.Find("ShreyaGameManager").GetComponent<ShreyaGameManager>();
     }
+
 
     // Update is called once per frame
     void Update()
