@@ -62,6 +62,14 @@ public class ShreyaPlayerController : MonoBehaviour
         }
     }
 
+    public void BonusPoints()
+    {
+        if (gameManager !=null)
+        {
+            gameManager.AddScore(10);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if(whatDidIHit.tag == "Powerup")
@@ -82,6 +90,7 @@ public class ShreyaPlayerController : MonoBehaviour
         else if(whatDidIHit.tag == "PlusCoin")
         {
             Destroy(whatDidIHit.gameObject);
+            BonusPoints();
             int whichPowerup = Random.Range(1, 3);
             gameManager.PlaySound(2);
             switch (whichPowerup)

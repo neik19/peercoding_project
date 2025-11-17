@@ -126,11 +126,18 @@ public class GameManager1 : MonoBehaviour
     }
     void CreateSky()
     {
-        for(int i =0; i < 30; i++)
+        for(int i = 0; i < 30; i++)
         {
-            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize* 2f, horizontalScreenSize + 3f), Random.Range(-verticalScreenSize + 2f, verticalScreenSize), 4f), Quaternion.identity);
+            GameObject cloud = Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize + 3f), Random.Range(-verticalScreenSize + 2f, verticalScreenSize), 4f), Quaternion.identity);
+            
+            // Set random speed for each cloud
+            CloudMovement cloudScript = cloud.GetComponent<CloudMovement>();
+            if (cloudScript != null)
+            {
+                cloudScript.moveSpeed = Random.Range(0.5f, 2f); // Random speeds for variety
+                cloudScript.verticalScreenSize = verticalScreenSize;
+            }
         }
-        
     }
     // Update is called once per frame
     void Update()
