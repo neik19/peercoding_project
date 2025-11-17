@@ -68,10 +68,9 @@ public class ShreyaPlayerController : MonoBehaviour
             gameManager.PlaySound(1);
             switch (whichPowerup)
             {
-                case 1:
+                case 2:
                     //Picked up health
-                    gameManager.ManagePowerupText(1);
-                    gameManager.PlaySound(1);
+                    gameManager.ManagePowerupText(2);
                     break;
             }
         }

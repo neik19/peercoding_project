@@ -70,19 +70,28 @@ public class ShreyaGameManager : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         CreatePowerUp();
         StartCoroutine(SpawnPowerup());
-        powerUpText.text = "No PowerUps yet!";
+        powerUpText.text = "No Power Ups yet!";
 
     }
     void CreatePowerUp()
     {
         Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
     }
+
+    void CreatePlusCoin()
+    {
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize*0.8f, horizontalScreenSize *0.8f), Random.Range(-verticalScreenSize*0.6f, verticalScreenSize*0.6f), 0), Quaternion.identity);
+    }
+
     public void ManagePowerupText(int powerUpType)
     {
         switch(powerUpType)
         {
             case 1:
                 powerUpText.text = "Extra Health!";
+                break;
+            case 2:
+                powerUpText.text = "Bonus points!";
                 break;
             default:
                 powerUpText.text = "No PowerUps yet!";
@@ -130,11 +139,6 @@ public class ShreyaGameManager : MonoBehaviour
     void CreateShreyaEnemy()
     {
         Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
-    }
-
-    void CreatePlusCoin()
-    {
-        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize*0.8f, horizontalScreenSize *0.8f), Random.Range(-verticalScreenSize*0.6f, verticalScreenSize*0.6f), 0), Quaternion.identity);
     }
 
     public void AddScore(int earnedScore)
