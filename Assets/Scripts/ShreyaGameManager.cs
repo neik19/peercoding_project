@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class ShreyaGameManager : MonoBehaviour
 {
@@ -15,6 +14,7 @@ public class ShreyaGameManager : MonoBehaviour
     public GameObject shreyaEnemyPrefab;
 
     public GameObject cloudPrefab;
+    public GameObject coinPrefab;
     public GameObject gameOverText;
     public GameObject restartText;
     public GameObject powerupPrefab;
@@ -33,7 +33,6 @@ public class ShreyaGameManager : MonoBehaviour
 
     public float verticalScreenSize;
 
-    public int cloudMove;
     private bool gameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

@@ -1105,6 +1105,7 @@ MonoBehaviour:
   enemyNeilPrefab: {fileID: 3443598642758334722, guid: b7a4ddbab0d34754384d037d9741af0d, type: 3}
   shreyaEnemyPrefab: {fileID: 1386478856970676138, guid: f3f785c3615d3094bbe6eb64e170731c, type: 3}
   cloudPrefab: {fileID: 6887579723602768108, guid: 58b9f989accd136429028d0255fbeb61, type: 3}
+  coinPrefab: {fileID: 577422009328132295, guid: 58994e8a1080e3b478a946bf195f2b09, type: 3}
   gameOverText: {fileID: 433970032}
   restartText: {fileID: 546192552}
   powerupPrefab: {fileID: 8095683134460255822, guid: c9bc6742e76a68d4595f3efb223ee227, type: 3}
@@ -1115,9 +1116,9 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   powerUpText: {fileID: 1605035404}
   score: 0
+  cloudMove: 0
   horizontalScreenSize: 0
   verticalScreenSize: 0
-  cloudMove: 0
 --- !u!82 &1810247490
 AudioSource:
   m_ObjectHideFlags: 0
