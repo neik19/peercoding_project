@@ -25,6 +25,8 @@ public class ShreyaGameManager : MonoBehaviour
     public GameObject powerupPrefab;
 
     public GameObject audioPlayer;
+    public AudioClip powerUpSound;
+    public AudioClip powerDownSound;
 
     public AudioClip powerUpSound;
 
@@ -40,12 +42,12 @@ public class ShreyaGameManager : MonoBehaviour
 
     public int score;
 
-    public int cloudMove;
 
     public float horizontalScreenSize;
 
     public float verticalScreenSize;
 
+    public int cloudMove;
     private bool gameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -67,13 +69,40 @@ public class ShreyaGameManager : MonoBehaviour
         powerUpText.text = "No Power Ups yet!";
 
     }
-
-    IEnumerator SpawnPlusCoin()
+    IEnumerator SpawnPowerup()
     {
-        float spawnTime = Random.Range(4,8);
-        yield return new WaitForSeconds (spawnTime);
-        CreatePlusCoin();
-        StartCoroutine(SpawnPlusCoin());
+        float spawnTime = Random.Range(3, 5);
+        yield return new WaitForSeconds(spawnTime);
+        CreatePowerUp();
+        StartCoroutine(SpawnPowerup());
+    }
+    void CreatePowerUp()
+    {
+        Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
+    }
+    public void ManagePowerupText(int powerUpType)
+    {
+        switch(powerUpType)
+        {
+            case 1:
+                powerUpText.text = "Extra Health!";
+                break;
+            default:
+                powerUpText.text = "No PowerUps yet!";
+                break;
+        }
+    }
+        public void PlaySound(int whichSound)
+    {
+        switch (whichSound)
+        {
+            case 1:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerUpSound);
+                break;
+            case 2:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
+                break;
+        }
     }
 
     IEnumerator SpawnPowerup()
@@ -125,7 +154,7 @@ public class ShreyaGameManager : MonoBehaviour
     {
         for(int i =0; i < 30; i++)
         {
-            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize* 2f, horizontalScreenSize + 3f), Random.Range(-verticalScreenSize + 2f, verticalScreenSize), 4f), Quaternion.identity);
+            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize), Random.Range(-verticalScreenSize, verticalScreenSize), 4f), Quaternion.identity);
         }
         
     }

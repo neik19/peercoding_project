@@ -13,6 +13,7 @@ public class ShreyaEnemy : MonoBehaviour
         gameManager = GameObject.Find("GameManager1").GetComponent<GameManager1>();
     }
 
+
     // Update is called once per frame
     void Update()
     {
