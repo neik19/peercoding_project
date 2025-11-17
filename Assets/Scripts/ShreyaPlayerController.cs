@@ -17,13 +17,13 @@ public class ShreyaPlayerController : MonoBehaviour
 
     public GameObject explosionPrefab;
     public GameObject bulletPrefab;
-    private ShreyaGameManager gameManager;
+    private GameManager1 gameManager;
 
     void Start()
     {
-        gameManager = GameObject.Find("ShreyaGameManager").GetComponent<ShreyaGameManager>();
+        gameManager = GameObject.Find("GameManager1").GetComponent<GameManager1>();
         playerSpeed = 8f;
-        lives = 3;
+        lives = 1;
         // Set initial spawn position lower on the screen
         // Spawn at bottom half
         transform.position = new Vector3(0, -3f, 0);
@@ -31,9 +31,6 @@ public class ShreyaPlayerController : MonoBehaviour
     }
     public void LoseALife ()
     {
-        //live--
-        //live = lives -1
-        //lives -= 1
 
         lives--;
         
@@ -45,12 +42,41 @@ public class ShreyaPlayerController : MonoBehaviour
             gameManager.GameOver();
         }
     }
+    public void AddALife()
+    {
+        if (lives < 3)
+        {
+            lives++;
+            
+            if (gameManager != null)
+            {
+                gameManager.ChangeLivesText(lives);
+            }
+        }
+        else
+        {
+            if (gameManager != null)
+            {
+                gameManager.ManagePowerupText(3);
+            }
+        }
+    }
+
+    public void BonusPoints()
+    {
+        if (gameManager !=null)
+        {
+            gameManager.AddScore(10);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if(whatDidIHit.tag == "Powerup")
         {
             Destroy(whatDidIHit.gameObject);
-            int whichPowerup = Random.Range(1, 1);
+            AddALife();
+            int whichPowerup = Random.Range(1, 3);
             gameManager.PlaySound(1);
             switch (whichPowerup)
             {
@@ -61,7 +87,30 @@ public class ShreyaPlayerController : MonoBehaviour
                     break;
             }
         }
+        else if(whatDidIHit.tag == "PlusCoin")
+        {
+            Destroy(whatDidIHit.gameObject);
+            BonusPoints();
+            int whichPowerup = Random.Range(1, 3);
+            gameManager.PlaySound(2);
+            switch (whichPowerup)
+            {
+                case 2:
+                    //Picked up coin
+                    gameManager.ManagePowerupText(2);
+                    break;
+            }
+        }    
+        else if(whatDidIHit.tag == "Enemy")
+        {
+            Destroy(whatDidIHit.gameObject); // Destroy the enemy
+            LoseALife(); // Player loses a life
+            gameManager.PlaySound(3);
+        }
+        
     }
+
+
     void Update()
     {
         //This function is called every frame; 60 frames/second

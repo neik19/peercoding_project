@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8583415477399048810}
   - component: {fileID: 3051540221296311262}
+  - component: {fileID: 2995136728248153945}
   m_Layer: 0
   m_Name: Clouds
   m_TagString: Untagged
@@ -90,3 +91,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2995136728248153945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887579723602768108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1591223bfba5bba4c92b695376f0d6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CloudMovement
+  moveSpeed: 1
+  horizontalScreenSize: 10

@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class ShreyaGameManager : MonoBehaviour
+public class GameManager1 : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject enemyTotsPrefab;
@@ -25,8 +25,6 @@ public class ShreyaGameManager : MonoBehaviour
     public GameObject powerupPrefab;
 
     public GameObject audioPlayer;
-    public AudioClip powerUpSound;
-    public AudioClip powerDownSound;
 
     public AudioClip powerUpSound;
 
@@ -42,12 +40,12 @@ public class ShreyaGameManager : MonoBehaviour
 
     public int score;
 
+    public int cloudMove;
 
     public float horizontalScreenSize;
 
     public float verticalScreenSize;
 
-    public int cloudMove;
     private bool gameOver;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -69,40 +67,13 @@ public class ShreyaGameManager : MonoBehaviour
         powerUpText.text = "No Power Ups yet!";
 
     }
-    IEnumerator SpawnPowerup()
+
+    IEnumerator SpawnPlusCoin()
     {
-        float spawnTime = Random.Range(3, 5);
-        yield return new WaitForSeconds(spawnTime);
-        CreatePowerUp();
-        StartCoroutine(SpawnPowerup());
-    }
-    void CreatePowerUp()
-    {
-        Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
-    }
-    public void ManagePowerupText(int powerUpType)
-    {
-        switch(powerUpType)
-        {
-            case 1:
-                powerUpText.text = "Extra Health!";
-                break;
-            default:
-                powerUpText.text = "No PowerUps yet!";
-                break;
-        }
-    }
-        public void PlaySound(int whichSound)
-    {
-        switch (whichSound)
-        {
-            case 1:
-                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerUpSound);
-                break;
-            case 2:
-                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
-                break;
-        }
+        float spawnTime = Random.Range(4,8);
+        yield return new WaitForSeconds (spawnTime);
+        CreatePlusCoin();
+        StartCoroutine(SpawnPlusCoin());
     }
 
     IEnumerator SpawnPowerup()
@@ -148,15 +119,25 @@ public class ShreyaGameManager : MonoBehaviour
             case 2:
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
                 break;
+            case 3:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
+            break;
         }
     }
     void CreateSky()
     {
-        for(int i =0; i < 30; i++)
+        for(int i = 0; i < 30; i++)
         {
-            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize), Random.Range(-verticalScreenSize, verticalScreenSize), 4f), Quaternion.identity);
+            GameObject cloud = Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize + 3f), Random.Range(-verticalScreenSize + 2f, verticalScreenSize), 4f), Quaternion.identity);
+            
+            // Set random speed for each cloud
+            CloudMovement cloudScript = cloud.GetComponent<CloudMovement>();
+            if (cloudScript != null)
+            {
+                cloudScript.moveSpeed = Random.Range(0.5f, 2f); // Random speeds for variety
+                cloudScript.verticalScreenSize = verticalScreenSize;
+            }
         }
-        
     }
     // Update is called once per frame
     void Update()

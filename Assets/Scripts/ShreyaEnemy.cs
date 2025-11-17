@@ -5,11 +5,12 @@ using UnityEngine;
 public class ShreyaEnemy : MonoBehaviour
 {
     public GameObject explosionPrefab;
-    private ShreyaGameManager gameManager;
+    private GameManager1 gameManager;
+
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameObject.Find("ShreyaGameManager").GetComponent<ShreyaGameManager>();
+        gameManager = GameObject.Find("GameManager1").GetComponent<GameManager1>();
     }
 
 
