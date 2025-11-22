@@ -91,7 +91,7 @@ public class GameManager1 : MonoBehaviour
 
     void CreatePlusCoin()
     {
-        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize*0.8f, horizontalScreenSize *0.8f), Random.Range(-verticalScreenSize*0.6f, verticalScreenSize*0.6f), 0), Quaternion.identity);
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize* 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize* 0.8f, verticalScreenSize*0.6f), 0), Quaternion.identity);
     }
 
     public void ManagePowerupText(int powerUpType)
