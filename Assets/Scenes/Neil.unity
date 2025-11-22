@@ -1291,7 +1291,7 @@ MonoBehaviour:
   cloudPrefab: {fileID: 6887579723602768108, guid: 58b9f989accd136429028d0255fbeb61, type: 3}
   coinPrefab: {fileID: 577422009328132295, guid: 58994e8a1080e3b478a946bf195f2b09, type: 3}
   powerupPrefab: {fileID: 8095683134460255822, guid: c9bc6742e76a68d4595f3efb223ee227, type: 3}
-  ShieldPrefab: {fileID: 0}
+  ShieldPrefab: {fileID: 1269678644715416046, guid: aff71ffa1c40fa344b0af488c0881422, type: 3}
   gameOverText: {fileID: 1626224574}
   restartText: {fileID: 706754303}
   audioPlayer: {fileID: 2062267837}
