@@ -8,6 +8,7 @@ TagManager:
   - Powerup
   - PlusCoin
   - Enemy
+  - Shield
   layers:
   - Default
   - TransparentFX

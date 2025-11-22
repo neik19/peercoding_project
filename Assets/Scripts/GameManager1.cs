@@ -33,6 +33,8 @@ public class GameManager1 : MonoBehaviour
 
     public AudioClip explosionBoom;
 
+    public AudioClip ShieldSound;
+
     public TextMeshProUGUI livesText;
 
     public TextMeshProUGUI scoreText;
@@ -48,6 +50,9 @@ public class GameManager1 : MonoBehaviour
     public float verticalScreenSize;
 
     private bool gameOver;
+
+    [SerializeField] private AudioClip playerDamageSound;
+    [SerializeField] private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -72,7 +77,7 @@ public class GameManager1 : MonoBehaviour
 
     IEnumerator SpawnPlusCoin()
     {
-        float spawnTime = Random.Range(4,8);
+        float spawnTime = Random.Range(3f,6f);
         yield return new WaitForSeconds (spawnTime);
         CreatePlusCoin();
         StartCoroutine(SpawnPlusCoin());
@@ -80,7 +85,7 @@ public class GameManager1 : MonoBehaviour
 
     IEnumerator SpawnPowerup()
     {
-        float spawnTime = Random.Range(3, 7);
+        float spawnTime = Random.Range(1f, 14f);
         yield return new WaitForSeconds(spawnTime);
         CreatePowerUp();
         StartCoroutine(SpawnPowerup());
@@ -88,7 +93,7 @@ public class GameManager1 : MonoBehaviour
     }
     IEnumerator SpawnShield()
     {
-        float spawnTime = Random.Range(3, 8);
+        float spawnTime = Random.Range(8f, 18f);
         yield return new WaitForSeconds(spawnTime);
         CreateShield();
         StartCoroutine(SpawnShield());
@@ -138,7 +143,7 @@ public class GameManager1 : MonoBehaviour
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
                 break;
             case 3:
-                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(ShieldSound);
             break;
         }
     }
@@ -189,6 +194,15 @@ public class GameManager1 : MonoBehaviour
     {
         livesText.text = "Lives: " + currentLives;
     }
+
+    public void PlayPlayerDamageSound()
+    {
+        if (audioSource != null && playerDamageSound != null)
+        {
+            audioSource.PlayOneShot(playerDamageSound);
+        }
+    }
+
     public void GameOver()
     {
         gameOverText.SetActive(true);

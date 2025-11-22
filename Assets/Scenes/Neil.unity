@@ -1298,6 +1298,7 @@ MonoBehaviour:
   powerUpSound: {fileID: 8300000, guid: 605e621c2f3e0294c9b98402ad3dd84f, type: 3}
   powerDownSound: {fileID: 8300000, guid: 52a0113bfcc54ac4a9e23efa6cc97dcb, type: 3}
   explosionBoom: {fileID: 8300000, guid: 9022136f12d06d047a349464a9278459, type: 3}
+  ShieldSound: {fileID: 8300000, guid: 9d462205f7eec24438111f6a1f11480c, type: 3}
   livesText: {fileID: 220472948}
   scoreText: {fileID: 1745155605}
   powerUpText: {fileID: 1447557525}
@@ -1305,6 +1306,8 @@ MonoBehaviour:
   cloudMove: 2
   horizontalScreenSize: 0
   verticalScreenSize: 0
+  playerDamageSound: {fileID: 8300000, guid: 4f00b813c6eaeda41b503375484e7bcb, type: 3}
+  audioSource: {fileID: 2062267840}
 --- !u!1 &2133142877
 GameObject:
   m_ObjectHideFlags: 0
