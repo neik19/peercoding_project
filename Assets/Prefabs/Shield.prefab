@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1956764655954366217}
   - component: {fileID: 5794438678872277217}
   m_Layer: 0
-  m_Name: TEMPshield
+  m_Name: Shield
   m_TagString: Powerup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

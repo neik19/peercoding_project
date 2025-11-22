@@ -17,11 +17,13 @@ public class GameManager1 : MonoBehaviour
 
     public GameObject coinPrefab;
 
+    public GameObject powerupPrefab;
+
+    public GameObject ShieldPrefab;
+
     public GameObject gameOverText;
 
     public GameObject restartText;
-
-    public GameObject powerupPrefab;
 
     public GameObject audioPlayer;
 
@@ -63,6 +65,7 @@ public class GameManager1 : MonoBehaviour
         InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
         StartCoroutine(SpawnPlusCoin());
         StartCoroutine(SpawnPowerup());
+        StartCoroutine(SpawnShield());
         powerUpText.text = "No Power Ups yet!";
 
     }
@@ -77,10 +80,18 @@ public class GameManager1 : MonoBehaviour
 
     IEnumerator SpawnPowerup()
     {
-        float spawnTime = Random.Range(3, 5);
+        float spawnTime = Random.Range(3, 7);
         yield return new WaitForSeconds(spawnTime);
         CreatePowerUp();
         StartCoroutine(SpawnPowerup());
+
+    }
+    IEnumerator SpawnShield()
+    {
+        float spawnTime = Random.Range(3, 8);
+        yield return new WaitForSeconds(spawnTime);
+        CreateShield();
+        StartCoroutine(SpawnShield());
 
     }
     void CreatePowerUp()
@@ -93,15 +104,23 @@ public class GameManager1 : MonoBehaviour
         Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize* 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize* 0.8f, verticalScreenSize*0.6f), 0), Quaternion.identity);
     }
 
+        void CreateShield()
+    {
+        Instantiate(ShieldPrefab, new Vector3(Random.Range(-horizontalScreenSize* 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize* 0.8f, verticalScreenSize*0.6f), 0), Quaternion.identity);
+    }
+
     public void ManagePowerupText(int powerUpType)
     {
         switch(powerUpType)
         {
             case 1:
-                powerUpText.text = "Extra Health!";
+                powerUpText.text = "Extra health Obtained! +1 life!";
                 break;
             case 2:
-                powerUpText.text = "Bonus points!";
+                powerUpText.text = "Coin Obtained! +10 bonus points!";
+                break;
+            case 3:
+                powerUpText.text = "Shield Obtained! Will withstand another hit!";
                 break;
             default:
                 powerUpText.text = "No PowerUps yet!";
