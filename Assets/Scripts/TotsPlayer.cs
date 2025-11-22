@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class TotsPlayer : MonoBehaviour
@@ -7,16 +8,18 @@ public class TotsPlayer : MonoBehaviour
     //movement
     //shooting
     //scope access modifier private or public
+    private TatiGameManager gameManager;
     public int lives;
     private float playerSpeed;
     private float horizontalInput;
     private float verticalInput;
 
     private float horizontalScreenLimit = 9.5f;
-    private float verticalScreenLimit = 4f; // Changed to 4f for bottom half
+    private float verticalScreenLimit = 4f; // idk this is confuzzling me
 
     public GameObject bulletPrefab;
     public GameObject explosionPrefab;
+    public GameObject shieldPowerupPrefab;
 
     void Start()
     {
@@ -42,6 +45,29 @@ public class TotsPlayer : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+    IEnumerator ShieldPowerupDuration()
+    {
+        yield return new WaitForSeconds(5);
+        shieldPowerupPrefab.SetActive(false);
+        gameManager.ManagePowerupText(0);
+    }
+    private void OnTriggerEnter2D(Collider2D whatDidIHit)
+    {
+        if(whatDidIHit.tag=="Powerup")
+        {
+            Destroy(whatDidIHit.gameObject);
+            int whichPowerup = Random.Range(1,4);
+            switch(whichPowerup)
+            {
+                //shield active
+                case 3:
+                shieldPowerupPrefab.SetActive(true);
+                gameManager.ManagePowerupText(3);
+                break;
+             }
+        }
+    }
+
     void Shooting()
     {
         //if the player presses the SPACE key, create a projectile
@@ -53,7 +79,7 @@ public class TotsPlayer : MonoBehaviour
 
     void Movement()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+       horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
         
         transform.Translate(new Vector3(horizontalInput, verticalInput, 0f) * Time.deltaTime * playerSpeed);
@@ -77,6 +103,4 @@ public class TotsPlayer : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 0f, 0f);
         }
     }
-    
-    
 }

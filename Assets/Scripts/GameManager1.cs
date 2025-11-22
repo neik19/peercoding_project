@@ -3,7 +3,6 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
 public class GameManager1 : MonoBehaviour
 {
