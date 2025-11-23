@@ -105,6 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShreyaPlayerController
   lives: 0
+  shieldActive: {fileID: 2735562627088290532, guid: 1af0acb7369cae747b22cf8986e1e2a2, type: 3}
   explosionPrefab: {fileID: 7597062062899206907, guid: 0233500eacdb33e428a02cfba13b5f83, type: 3}
   bulletPrefab: {fileID: 125460898009701601, guid: 90788e40197ec6a4a9903c7d42a23963, type: 3}
 --- !u!61 &3276442240050094003

@@ -13,6 +13,10 @@ public class ShreyaPlayerController : MonoBehaviour
     private float verticalInput;
     private bool isAlive = true;
 
+    [Header("Shield Settings")]
+        public GameObject shieldActive; // Reference to shield mesh/effect
+        private bool hasShield = false;
+        private GameObject currentShield;
 
     private float horizontalScreenLimit = 9.5f;
     private float verticalScreenLimit = 6.5f;
@@ -34,10 +38,17 @@ public class ShreyaPlayerController : MonoBehaviour
     }
     private void LoseALife()
     {
-        if (!isAlive) return; // Don't process if already dead
+        if (!isAlive) return;
+        
+        // Check if shield absorbs the hit
+        if (hasShield)
+        {
+            UseShield();
+            return; // Shield blocked the damage!
+        }
         
         lives--;
-        gameManager.ChangeLivesText(lives); // Add this line to update the UI
+        gameManager.ChangeLivesText(lives);
         
         if (lives <= 0)
         {
@@ -96,6 +107,36 @@ public class ShreyaPlayerController : MonoBehaviour
         }
     }
 
+    public void ActivateShield()
+    {
+        if (hasShield) return; // Don't stack shields
+        
+        hasShield = true;
+        
+        // Create shield visual around player
+        if (shieldActive != null)
+        {
+            currentShield = Instantiate(shieldActive, transform.position, Quaternion.identity);
+            currentShield.transform.SetParent(transform); // Make it follow player
+            currentShield.transform.localPosition = Vector3.zero; // Center on player
+        }
+    }
+
+    private void UseShield()
+    {
+        if (!hasShield) return;
+        
+        hasShield = false;
+        
+        // Remove shield visual
+        if (currentShield != null)
+        {
+            Destroy(currentShield);
+            gameManager.PlaySound(5);
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if(whatDidIHit.tag == "Powerup")
@@ -115,7 +156,7 @@ public class ShreyaPlayerController : MonoBehaviour
         else if(whatDidIHit.tag == "Shield")
         {
             Destroy(whatDidIHit.gameObject);
-            BonusPoints();
+            ActivateShield();
             gameManager.ManagePowerupText(3); // Directly set to Shield
             gameManager.PlaySound(3); // Play Shield sound
         }    

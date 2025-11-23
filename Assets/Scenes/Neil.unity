@@ -1299,6 +1299,7 @@ MonoBehaviour:
   powerDownSound: {fileID: 8300000, guid: 52a0113bfcc54ac4a9e23efa6cc97dcb, type: 3}
   explosionBoom: {fileID: 8300000, guid: 9022136f12d06d047a349464a9278459, type: 3}
   ShieldSound: {fileID: 8300000, guid: 9d462205f7eec24438111f6a1f11480c, type: 3}
+  ShieldCrack: {fileID: 8300000, guid: 3ff5da560401f234d8ef1891692e8986, type: 3}
   livesText: {fileID: 220472948}
   scoreText: {fileID: 1745155605}
   powerUpText: {fileID: 1447557525}

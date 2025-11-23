@@ -35,6 +35,8 @@ public class GameManager1 : MonoBehaviour
 
     public AudioClip ShieldSound;
 
+    public AudioClip ShieldCrack;
+
     public TextMeshProUGUI livesText;
 
     public TextMeshProUGUI scoreText;
@@ -132,7 +134,7 @@ public class GameManager1 : MonoBehaviour
                 break;
         }
     }
-        public void PlaySound(int whichSound)
+    public void PlaySound(int whichSound)
     {
         switch (whichSound)
         {
@@ -144,7 +146,11 @@ public class GameManager1 : MonoBehaviour
                 break;
             case 3:
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(ShieldSound);
-            break;
+                break;
+            case 5:
+                if (ShieldCrack != null)
+                    audioPlayer.GetComponent<AudioSource>().PlayOneShot(ShieldCrack);
+                break;
         }
     }
     void CreateSky()
