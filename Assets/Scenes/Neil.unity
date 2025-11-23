@@ -210,7 +210,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -98.55151, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -825,7 +825,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -856,7 +856,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -133.06311, y: 0, z: -193.99463, w: -68.42859}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1097,7 +1097,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1128,7 +1128,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: -81.059006, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1290,13 +1290,16 @@ MonoBehaviour:
   shreyaEnemyPrefab: {fileID: 1386478856970676138, guid: f3f785c3615d3094bbe6eb64e170731c, type: 3}
   cloudPrefab: {fileID: 6887579723602768108, guid: 58b9f989accd136429028d0255fbeb61, type: 3}
   coinPrefab: {fileID: 577422009328132295, guid: 58994e8a1080e3b478a946bf195f2b09, type: 3}
+  powerupPrefab: {fileID: 8095683134460255822, guid: c9bc6742e76a68d4595f3efb223ee227, type: 3}
+  ShieldPrefab: {fileID: 1269678644715416046, guid: aff71ffa1c40fa344b0af488c0881422, type: 3}
   gameOverText: {fileID: 1626224574}
   restartText: {fileID: 706754303}
-  powerupPrefab: {fileID: 8095683134460255822, guid: c9bc6742e76a68d4595f3efb223ee227, type: 3}
   audioPlayer: {fileID: 2062267837}
   powerUpSound: {fileID: 8300000, guid: 605e621c2f3e0294c9b98402ad3dd84f, type: 3}
   powerDownSound: {fileID: 8300000, guid: 52a0113bfcc54ac4a9e23efa6cc97dcb, type: 3}
   explosionBoom: {fileID: 8300000, guid: 9022136f12d06d047a349464a9278459, type: 3}
+  ShieldSound: {fileID: 8300000, guid: 9d462205f7eec24438111f6a1f11480c, type: 3}
+  ShieldCrack: {fileID: 8300000, guid: 3ff5da560401f234d8ef1891692e8986, type: 3}
   livesText: {fileID: 220472948}
   scoreText: {fileID: 1745155605}
   powerUpText: {fileID: 1447557525}
@@ -1304,6 +1307,8 @@ MonoBehaviour:
   cloudMove: 2
   horizontalScreenSize: 0
   verticalScreenSize: 0
+  playerDamageSound: {fileID: 8300000, guid: 4f00b813c6eaeda41b503375484e7bcb, type: 3}
+  audioSource: {fileID: 2062267840}
 --- !u!1 &2133142877
 GameObject:
   m_ObjectHideFlags: 0

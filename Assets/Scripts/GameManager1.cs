@@ -17,11 +17,13 @@ public class GameManager1 : MonoBehaviour
 
     public GameObject coinPrefab;
 
+    public GameObject powerupPrefab;
+
+    public GameObject ShieldPrefab;
+
     public GameObject gameOverText;
 
     public GameObject restartText;
-
-    public GameObject powerupPrefab;
 
     public GameObject audioPlayer;
 
@@ -30,6 +32,10 @@ public class GameManager1 : MonoBehaviour
     public AudioClip powerDownSound;
 
     public AudioClip explosionBoom;
+
+    public AudioClip ShieldSound;
+
+    public AudioClip ShieldCrack;
 
     public TextMeshProUGUI livesText;
 
@@ -47,6 +53,9 @@ public class GameManager1 : MonoBehaviour
 
     private bool gameOver;
 
+    [SerializeField] private AudioClip playerDamageSound;
+    [SerializeField] private AudioSource audioSource;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -63,13 +72,14 @@ public class GameManager1 : MonoBehaviour
         InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
         StartCoroutine(SpawnPlusCoin());
         StartCoroutine(SpawnPowerup());
+        StartCoroutine(SpawnShield());
         powerUpText.text = "No Power Ups yet!";
 
     }
 
     IEnumerator SpawnPlusCoin()
     {
-        float spawnTime = Random.Range(4,8);
+        float spawnTime = Random.Range(3f,6f);
         yield return new WaitForSeconds (spawnTime);
         CreatePlusCoin();
         StartCoroutine(SpawnPlusCoin());
@@ -77,10 +87,18 @@ public class GameManager1 : MonoBehaviour
 
     IEnumerator SpawnPowerup()
     {
-        float spawnTime = Random.Range(3, 5);
+        float spawnTime = Random.Range(1f, 14f);
         yield return new WaitForSeconds(spawnTime);
         CreatePowerUp();
         StartCoroutine(SpawnPowerup());
+
+    }
+    IEnumerator SpawnShield()
+    {
+        float spawnTime = Random.Range(8f, 18f);
+        yield return new WaitForSeconds(spawnTime);
+        CreateShield();
+        StartCoroutine(SpawnShield());
 
     }
     void CreatePowerUp()
@@ -93,22 +111,30 @@ public class GameManager1 : MonoBehaviour
         Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize* 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize* 0.8f, verticalScreenSize*0.6f), 0), Quaternion.identity);
     }
 
+        void CreateShield()
+    {
+        Instantiate(ShieldPrefab, new Vector3(Random.Range(-horizontalScreenSize* 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize* 0.8f, verticalScreenSize*0.6f), 0), Quaternion.identity);
+    }
+
     public void ManagePowerupText(int powerUpType)
     {
         switch(powerUpType)
         {
             case 1:
-                powerUpText.text = "Extra Health!";
+                powerUpText.text = "Extra health Obtained! +1 life!";
                 break;
             case 2:
-                powerUpText.text = "Bonus points!";
+                powerUpText.text = "Coin Obtained! +10 bonus points!";
+                break;
+            case 3:
+                powerUpText.text = "Shield Obtained! Will withstand another hit!";
                 break;
             default:
                 powerUpText.text = "No PowerUps yet!";
                 break;
         }
     }
-        public void PlaySound(int whichSound)
+    public void PlaySound(int whichSound)
     {
         switch (whichSound)
         {
@@ -119,8 +145,12 @@ public class GameManager1 : MonoBehaviour
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
                 break;
             case 3:
-                audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
-            break;
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(ShieldSound);
+                break;
+            case 5:
+                if (ShieldCrack != null)
+                    audioPlayer.GetComponent<AudioSource>().PlayOneShot(ShieldCrack);
+                break;
         }
     }
     void CreateSky()
@@ -170,6 +200,15 @@ public class GameManager1 : MonoBehaviour
     {
         livesText.text = "Lives: " + currentLives;
     }
+
+    public void PlayPlayerDamageSound()
+    {
+        if (audioSource != null && playerDamageSound != null)
+        {
+            audioSource.PlayOneShot(playerDamageSound);
+        }
+    }
+
     public void GameOver()
     {
         gameOverText.SetActive(true);

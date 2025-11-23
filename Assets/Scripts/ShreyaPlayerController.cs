@@ -11,6 +11,12 @@ public class ShreyaPlayerController : MonoBehaviour
     private float playerSpeed;
     private float horizontalInput;
     private float verticalInput;
+    private bool isAlive = true;
+
+    [Header("Shield Settings")]
+        public GameObject shieldActive; // Reference to shield mesh/effect
+        private bool hasShield = false;
+        private GameObject currentShield;
 
     private float horizontalScreenLimit = 9.5f;
     private float verticalScreenLimit = 6.5f;
@@ -18,6 +24,7 @@ public class ShreyaPlayerController : MonoBehaviour
     public GameObject explosionPrefab;
     public GameObject bulletPrefab;
     private GameManager1 gameManager;
+    
 
     void Start()
     {
@@ -29,19 +36,49 @@ public class ShreyaPlayerController : MonoBehaviour
         transform.position = new Vector3(0, -3f, 0);
         gameManager.ChangeLivesText(lives);
     }
-    public void LoseALife ()
+    private void LoseALife()
     {
-
-        lives--;
+        if (!isAlive) return;
         
-        gameManager.ChangeLivesText(lives);
-        if(lives == 0)
+        // Check if shield absorbs the hit
+        if (hasShield)
         {
-            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
-            Destroy(this.gameObject);
-            gameManager.GameOver();
+            UseShield();
+            return; // Shield blocked the damage!
+        }
+        
+        lives--;
+        gameManager.ChangeLivesText(lives);
+        
+        if (lives <= 0)
+        {
+            Die(); 
+        }
+        else
+        {
+            gameManager.PlayPlayerDamageSound();
         }
     }
+    private void Die()
+    {
+        isAlive = false;
+        
+        // Show explosion
+        if (explosionPrefab != null)
+        {
+            Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        }
+        
+        // Notify GameManager
+        if (gameManager != null)
+        {
+            gameManager.GameOver();
+        }
+        
+        // Destroy after a short delay so explosion can be seen
+        Destroy(gameObject);
+    }
+
     public void AddALife()
     {
         if (lives < 3)
@@ -70,45 +107,68 @@ public class ShreyaPlayerController : MonoBehaviour
         }
     }
 
+    public void ActivateShield()
+    {
+        if (hasShield) return; // Don't stack shields
+        
+        hasShield = true;
+        
+        // Create shield visual around player
+        if (shieldActive != null)
+        {
+            currentShield = Instantiate(shieldActive, transform.position, Quaternion.identity);
+            currentShield.transform.SetParent(transform); // Make it follow player
+            currentShield.transform.localPosition = Vector3.zero; // Center on player
+        }
+    }
+
+    private void UseShield()
+    {
+        if (!hasShield) return;
+        
+        hasShield = false;
+        
+        // Remove shield visual
+        if (currentShield != null)
+        {
+            Destroy(currentShield);
+            gameManager.PlaySound(5);
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D whatDidIHit)
     {
         if(whatDidIHit.tag == "Powerup")
         {
             Destroy(whatDidIHit.gameObject);
             AddALife();
-            int whichPowerup = Random.Range(1, 3);
+            gameManager.ManagePowerupText(1);
             gameManager.PlaySound(1);
-            switch (whichPowerup)
-            {
-                case 1:
-                    //Picked up health
-                    gameManager.ManagePowerupText(1);
-                    gameManager.PlaySound(1);
-                    break;
-            }
         }
         else if(whatDidIHit.tag == "PlusCoin")
         {
             Destroy(whatDidIHit.gameObject);
             BonusPoints();
-            int whichPowerup = Random.Range(1, 3);
+            gameManager.ManagePowerupText(2);
             gameManager.PlaySound(2);
-            switch (whichPowerup)
-            {
-                case 2:
-                    //Picked up coin
-                    gameManager.ManagePowerupText(2);
-                    break;
-            }
         }    
+        else if(whatDidIHit.tag == "Shield")
+        {
+            Destroy(whatDidIHit.gameObject);
+            ActivateShield();
+            gameManager.ManagePowerupText(3); // Directly set to Shield
+            gameManager.PlaySound(3); // Play Shield sound
+        }    
+        
         else if(whatDidIHit.tag == "Enemy")
         {
-            Destroy(whatDidIHit.gameObject); // Destroy the enemy
-            LoseALife(); // Player loses a life
-            gameManager.PlaySound(3);
+            Destroy(whatDidIHit.gameObject);
+            LoseALife();
         }
         
     }
+
 
 
     void Update()
