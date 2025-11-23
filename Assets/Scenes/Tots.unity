@@ -487,159 +487,6 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
---- !u!1 &799417728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 799417733}
-  - component: {fileID: 799417732}
-  - component: {fileID: 799417731}
-  - component: {fileID: 799417734}
-  - component: {fileID: 799417735}
-  m_Layer: 0
-  m_Name: Player
-  m_TagString: Player
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!23 &799417731
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799417728}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &799417732
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799417728}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &799417733
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799417728}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &799417734
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799417728}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &799417735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 799417728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fde77ec9fc3a5f4f9942d38223a8020, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TotsPlayer
-  lives: 0
-  bulletPrefab: {fileID: 125460898009701601, guid: 4d32237b517b20a4db341d1a892cd788, type: 3}
-  explosionPrefab: {fileID: 3562516053837853733, guid: 68ec7371e1c071c40bd85a0bcdf07f05, type: 3}
-  shieldPowerupPrefab: {fileID: 1269678644715416046, guid: aff71ffa1c40fa344b0af488c0881422, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -779,7 +626,7 @@ GameObject:
   - component: {fileID: 1235315024}
   - component: {fileID: 1235315025}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GameManager1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -809,21 +656,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1235315022}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 011ab01df96037a4abb554762398ee77, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f63855f760cdb64cb41b2b3a66f15bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TotsGameManager
-  playerPrefab: {fileID: 2944992014088132842, guid: d18a8d15aba113f47a64878c34906366, type: 3}
-  enemyOnePrefab: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+  playerPrefab: {fileID: 8150804426980598083, guid: 1cde63f8e074b2c439997046f74be0da, type: 3}
+  enemyTotsPrefab: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
   enemyNeilPrefab: {fileID: 3443598642758334722, guid: b7a4ddbab0d34754384d037d9741af0d, type: 3}
   shreyaEnemyPrefab: {fileID: 1386478856970676138, guid: f3f785c3615d3094bbe6eb64e170731c, type: 3}
-  shieldPowerupPrefab: {fileID: 1269678644715416046, guid: aff71ffa1c40fa344b0af488c0881422, type: 3}
+  cloudPrefab: {fileID: 6887579723602768108, guid: 58b9f989accd136429028d0255fbeb61, type: 3}
+  coinPrefab: {fileID: 577422009328132295, guid: 58994e8a1080e3b478a946bf195f2b09, type: 3}
+  powerupPrefab: {fileID: 8095683134460255822, guid: c9bc6742e76a68d4595f3efb223ee227, type: 3}
+  ShieldPrefab: {fileID: 1269678644715416046, guid: aff71ffa1c40fa344b0af488c0881422, type: 3}
+  gameOverText: {fileID: 0}
+  restartText: {fileID: 0}
+  audioPlayer: {fileID: 1235315022}
+  powerUpSound: {fileID: 8300000, guid: 605e621c2f3e0294c9b98402ad3dd84f, type: 3}
+  powerDownSound: {fileID: 8300000, guid: 52a0113bfcc54ac4a9e23efa6cc97dcb, type: 3}
+  explosionBoom: {fileID: 0}
+  ShieldSound: {fileID: 8300000, guid: 9d462205f7eec24438111f6a1f11480c, type: 3}
+  ShieldCrack: {fileID: 8300000, guid: 3ff5da560401f234d8ef1891692e8986, type: 3}
   livesText: {fileID: 1454280213}
   scoreText: {fileID: 1673779000}
-  shieldPowerupText: {fileID: 1701679953}
   powerUpText: {fileID: 0}
   score: 0
+  cloudMove: 1
   horizontalScreenSize: 0
   verticalScreenSize: 0
+  playerDamageSound: {fileID: 0}
+  audioSource: {fileID: 0}
 --- !u!1 &1454280211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1239,7 +1099,6 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 410087041}
   - {fileID: 832575519}
-  - {fileID: 799417733}
   - {fileID: 1235315024}
   - {fileID: 402803803}
   - {fileID: 942440815}
