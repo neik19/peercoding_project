@@ -3,11 +3,10 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using TMPro;
 
-public class TatiGaneManager : MonoBehaviour
+public class TotsGameManager : MonoBehaviour
 {
     public GameObject enemyOnePrefab;
     public GameObject enemyNeilPrefab;
-    public GameObject shreyaEnemyPrefab;
     public TextMeshProUGUI livesText;
     public int score;
     public float horizontalScreenSize;
@@ -21,7 +20,6 @@ public class TatiGaneManager : MonoBehaviour
         score = 0;
         InvokeRepeating("CreateEnemyOne", 2.5f, 3f);
         Invoke("CreateEnemyNeil", 7f);
-        InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
     }
 
     void CreateEnemyOne()
@@ -36,10 +34,5 @@ public class TatiGaneManager : MonoBehaviour
         Debug.Log("Enemy Neil created");
 
         Instantiate(enemyNeilPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
-    }
-
-    void CreateShreyaEnemy()
-    {
-        Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
 }    
