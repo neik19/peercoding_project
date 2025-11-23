@@ -33,7 +33,7 @@ public class ShreyaPlayerController : MonoBehaviour
         lives = 1;
         // Set initial spawn position lower on the screen
         // Spawn at bottom half
-        transform.position = new Vector3(0, -3f, 0);
+        transform.position = new Vector3(0, 0f, 0);
         gameManager.ChangeLivesText(lives);
     }
     private void LoseALife()
