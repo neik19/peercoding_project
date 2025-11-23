@@ -1,33 +1,60 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
-using System.Collections;
 
-public class ShreyaGameManager : MonoBehaviour
+public class GameManager1 : MonoBehaviour
 {
     public GameObject playerPrefab;
     public GameObject enemyTotsPrefab;
+
     public GameObject enemyNeilPrefab;
+
     public GameObject shreyaEnemyPrefab;
+
     public GameObject cloudPrefab;
-    public GameObject gameOverText;
-    public GameObject restartText;
+
+    public GameObject coinPrefab;
+
     public GameObject powerupPrefab;
+
+    public GameObject ShieldPrefab;
+
+    public GameObject gameOverText;
+
+    public GameObject restartText;
+
     public GameObject audioPlayer;
+
     public AudioClip powerUpSound;
+
     public AudioClip powerDownSound;
 
+    public AudioClip explosionBoom;
+
+    public AudioClip ShieldSound;
+
+    public AudioClip ShieldCrack;
+
     public TextMeshProUGUI livesText;
+
     public TextMeshProUGUI scoreText;
+
     public TextMeshProUGUI powerUpText;
+
     public int score;
-    public float horizontalScreenSize;
-    public float verticalScreenSize;
 
     public int cloudMove;
+
+    public float horizontalScreenSize;
+
+    public float verticalScreenSize;
+
     private bool gameOver;
+
+    [SerializeField] private AudioClip playerDamageSound;
+    [SerializeField] private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -41,35 +68,73 @@ public class ShreyaGameManager : MonoBehaviour
         Instantiate(playerPrefab, transform.position, Quaternion.identity);
         CreateSky();
         InvokeRepeating("CreateEnemyTots", 2.5f, 3f);
-        Invoke("CreateEnemyNeil", 7f);
+        InvokeRepeating("CreateEnemyNeil", 5f,6f);
         InvokeRepeating("CreateShreyaEnemy", 2f, 5f);
+        StartCoroutine(SpawnPlusCoin());
         StartCoroutine(SpawnPowerup());
-        powerUpText.text = "No PowerUps yet!";
+        StartCoroutine(SpawnShield());
+        powerUpText.text = "No Power Ups yet!";
+
     }
+
+    IEnumerator SpawnPlusCoin()
+    {
+        float spawnTime = Random.Range(3f,6f);
+        yield return new WaitForSeconds (spawnTime);
+        CreatePlusCoin();
+        StartCoroutine(SpawnPlusCoin());
+    }
+
     IEnumerator SpawnPowerup()
     {
-        float spawnTime = Random.Range(3, 5);
+        float spawnTime = Random.Range(1f, 14f);
         yield return new WaitForSeconds(spawnTime);
         CreatePowerUp();
         StartCoroutine(SpawnPowerup());
+
+    }
+    IEnumerator SpawnShield()
+    {
+        float spawnTime = Random.Range(8f, 18f);
+        yield return new WaitForSeconds(spawnTime);
+        CreateShield();
+        StartCoroutine(SpawnShield());
+
     }
     void CreatePowerUp()
     {
         Instantiate(powerupPrefab, new Vector3(Random.Range(-horizontalScreenSize * 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize * 0.8f, verticalScreenSize * 0.8f), 0), Quaternion.identity);
     }
+
+    void CreatePlusCoin()
+    {
+        Instantiate(coinPrefab, new Vector3(Random.Range(-horizontalScreenSize* 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize* 0.8f, verticalScreenSize*0.6f), 0), Quaternion.identity);
+    }
+
+        void CreateShield()
+    {
+        Instantiate(ShieldPrefab, new Vector3(Random.Range(-horizontalScreenSize* 0.8f, horizontalScreenSize * 0.8f), Random.Range(-verticalScreenSize* 0.8f, verticalScreenSize*0.6f), 0), Quaternion.identity);
+    }
+
     public void ManagePowerupText(int powerUpType)
     {
         switch(powerUpType)
         {
             case 1:
-                powerUpText.text = "Extra Health!";
+                powerUpText.text = "Extra health Obtained! +1 life!";
+                break;
+            case 2:
+                powerUpText.text = "Coin Obtained! +10 bonus points!";
+                break;
+            case 3:
+                powerUpText.text = "Shield Obtained! Will withstand another hit!";
                 break;
             default:
                 powerUpText.text = "No PowerUps yet!";
                 break;
         }
     }
-        public void PlaySound(int whichSound)
+    public void PlaySound(int whichSound)
     {
         switch (whichSound)
         {
@@ -79,15 +144,29 @@ public class ShreyaGameManager : MonoBehaviour
             case 2:
                 audioPlayer.GetComponent<AudioSource>().PlayOneShot(powerDownSound);
                 break;
+            case 3:
+                audioPlayer.GetComponent<AudioSource>().PlayOneShot(ShieldSound);
+                break;
+            case 5:
+                if (ShieldCrack != null)
+                    audioPlayer.GetComponent<AudioSource>().PlayOneShot(ShieldCrack);
+                break;
         }
     }
     void CreateSky()
     {
-        for(int i =0; i < 30; i++)
+        for(int i = 0; i < 30; i++)
         {
-            Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize), Random.Range(-verticalScreenSize, verticalScreenSize), 4f), Quaternion.identity);
+            GameObject cloud = Instantiate(cloudPrefab, new Vector3(Random.Range(-horizontalScreenSize, horizontalScreenSize + 3f), Random.Range(-verticalScreenSize + 2f, verticalScreenSize), 4f), Quaternion.identity);
+            
+            // Set random speed for each cloud
+            CloudMovement cloudScript = cloud.GetComponent<CloudMovement>();
+            if (cloudScript != null)
+            {
+                cloudScript.moveSpeed = Random.Range(0.5f, 2f); // Random speeds for variety
+                cloudScript.verticalScreenSize = verticalScreenSize;
+            }
         }
-        
     }
     // Update is called once per frame
     void Update()
@@ -102,7 +181,7 @@ public class ShreyaGameManager : MonoBehaviour
         Instantiate(enemyTotsPrefab, new Vector3(Random.Range(-8f, 8f), 6.5f, 0), Quaternion.identity);
     }
 
-        void CreateEnemyNeil()
+    void CreateEnemyNeil()
     { 
         Instantiate(enemyNeilPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
@@ -111,21 +190,25 @@ public class ShreyaGameManager : MonoBehaviour
     {
         Instantiate(shreyaEnemyPrefab, new Vector3(Random.Range(-8f, 8f), 4.5f, 0), Quaternion.identity);
     }
+
     public void AddScore(int earnedScore)
     {
         score += earnedScore;
-        //lives --
-        //lives -= 1
-        //lives = lives -1
-
-        //score ++
-        //score += 1
-        //score = score +1
+        scoreText.text = "Score: " + score;
     }
     public void ChangeLivesText(int currentLives)
     {
         livesText.text = "Lives: " + currentLives;
     }
+
+    public void PlayPlayerDamageSound()
+    {
+        if (audioSource != null && playerDamageSound != null)
+        {
+            audioSource.PlayOneShot(playerDamageSound);
+        }
+    }
+
     public void GameOver()
     {
         gameOverText.SetActive(true);

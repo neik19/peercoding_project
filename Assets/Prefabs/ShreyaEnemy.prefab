@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8357837506755991500}
   - component: {fileID: 1034805661149913236}
   - component: {fileID: -6919404199052866856}
-  - component: {fileID: 6008893146870268093}
-  - component: {fileID: 1502804563888805120}
+  - component: {fileID: 1466688521125909657}
+  - component: {fileID: 4581193520224157788}
   m_Layer: 0
   m_Name: ShreyaEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -104,8 +104,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08fb4870c0125474f91529c294aa2ec0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShreyaEnemy
-  explosionPrefab: {fileID: 7597062062899206907, guid: 0233500eacdb33e428a02cfba13b5f83, type: 3}
---- !u!61 &6008893146870268093
+  explosionPrefab: {fileID: 3562516053837853733, guid: 68ec7371e1c071c40bd85a0bcdf07f05, type: 3}
+--- !u!61 &1466688521125909657
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,7 +151,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!50 &1502804563888805120
+--- !u!50 &4581193520224157788
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0

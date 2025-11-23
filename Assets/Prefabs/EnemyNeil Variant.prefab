@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyNeil Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1386478856970676138, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4942970492426147600, guid: 6dd93e0a1d46cd440a666e2e43a0fcad, type: 3}
     m_RemovedGameObjects: []
@@ -91,3 +95,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyNeil
   bulletPrefab: {fileID: 125460898009701601, guid: 90788e40197ec6a4a9903c7d42a23963, type: 3}
+  explosionPrefab: {fileID: 3562516053837853733, guid: 68ec7371e1c071c40bd85a0bcdf07f05, type: 3}
